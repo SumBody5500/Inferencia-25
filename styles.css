@@ -1,0 +1,851 @@
+/* 🔹 BASIC RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.background
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #000; /* Dark background */
+    color: #fff ;
+    overflow-x: hidden;
+}
+
+/* 🔹 HEADER */
+header h1 {
+    font-size: 6rem; /* Large, bold font size */
+    font-weight: 900; /* Heavy font weight */
+    color: #ca891a; /* Vibrant yellow color */
+    text-transform: uppercase; /* Make text uppercase */
+    text-align: center; /* Center the text */
+    position: relative; /* Position for shadow effect */
+
+    /* Add text shadow for depth */
+    text-shadow: 
+        3px 3px 0 #892f2e, /* Vibrant red shadow */
+        6px 6px 0 rgba(0, 0, 0, 0.3); /* Slight black shadow for extra depth */
+    margin: 20px 0;
+}
+
+/* Subtitle Styling */
+header p {
+    font-size: 1.5rem; /* Large, bold font size */
+    font-weight: 600; /* Heavy font weight */
+    color: #ca891a; /* Vibrant yellow color */
+    text-transform: uppercase; /* Make text uppercase */
+    text-align: center; /* Center the text */
+    margin-top: 10px; /* Position for shadow effect */
+
+    /* Add text shadow for depth */
+    text-shadow: 
+        3px 3px 0 #892f2e, /* Vibrant red shadow */
+        6px 6px 0 rgba(0, 0, 0, 0.3); /* Slight black shadow for extra depth */
+    margin: 20px 0;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+/* 🔹 NAVIGATION MENU */
+.menu-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    background: #fff;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background: #333;
+    transition: 0.4s;
+    z-index: 1000;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding-top: 60px;
+}
+
+.nav-menu ul li {
+    padding: 1rem;
+    text-align: center;
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+/* 🔹 SECTIONS */
+section {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+/* 🔹 BUTTONS */
+button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #555;
+}
+
+/* 🔹 FOOTER */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* 🔹 HOMEPAGE SECTION */
+.homepage {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 0; /* Ensure proper stacking */
+}
+
+#bg-video {
+    position: absolute; /* Changed from fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    transform: translateZ(0); /* Improve scrolling performance */
+}
+
+/* 🔹 MAIN CONTENT (urie debo) */
+ main {
+    position: relative;
+    z-index: 2;
+    background: rgba(18, 18, 18, 0.95); /* More opaque background */
+    padding: 20px;
+    margin-top: 100vh; /* Push content below video */
+}
+
+/* Remove the fixed background containers */
+.fixed-bg-container {
+    display: none;
+}
+
+/* Hides the video after scrolling */
+.video-hidden {
+    opacity: 0;
+}
+
+/* 🔹 LOGO IMAGE INITIALLY (VISIBLE ON HOVER) */
+.image-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0; /* Hidden initially */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.transparent-image {
+    width: auto; /* Adjust size as needed */
+    height: auto;
+    filter: brightness(0.8) contrast(1.2) opacity(0.8); /* Subtle transparency */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Hover effect to show logo */
+.homepage:hover .image-container {
+    opacity: 1;
+}
+
+.homepage:hover .transparent-image {
+    transform: scale(1.1);
+}
+
+/* 🔹 FIXED LOGO AS BACKGROUND (AFTER SCROLLING) */
+.fixed-bg-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust for logo size */
+    height: 300px;
+    background-image: url('logo.png'); /* Set logo */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease-in-out;
+}
+
+/* LOGO BECOMES BACKGROUND */
+.fixed-bg-visible {
+    opacity: 1;
+} 
+
+
+/* 🔹 MAIN CONTENT - REDUCE MARGIN */
+main {
+    position: relative;
+    z-index: 2;
+    background: #000;
+    padding: 20px;
+    margin-top: 90vh; /* Reduced from 100vh */
+}
+
+
+/* 🔹 Poster Section */
+.poster-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 10px;
+    position: relative;
+}
+
+/* 🔹 Wrapper for Poster Card & Image */
+.poster-wrapper {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+}
+
+/* 🔹 Poster Card (Text Area) */
+.poster-card {
+    flex: 1;
+    background: #111; /* Black background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px #ca891a;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.poster-text {
+    color: white;
+    text-align: left;
+}
+
+.poster-text h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #f8a71b;
+}
+
+.poster-text p {
+    font-size: 1.2rem;
+}
+
+/* 🔹 Image Container - Positioned to Overlay */
+.poster-image-container {
+    position: absolute;
+    right: -50px; /* Adjust for overlap */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 260px;
+    height: 260px; /* Maintain square shape */
+    z-index: 2;
+}
+
+/* 🔹 Parallelogram Effect */
+.parallelogram {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* 🔹 Image (Fitted Inside Parallelogram) */
+.poster-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05); /* Ensure full coverage */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🔹 Hover Effects */
+.poster-wrapper:hover .poster-image {
+    transform: scale(1.1); /* Slight zoom */
+}
+
+.poster-wrapper:hover .poster-card {
+    transform: scale(1.02);
+}
+
+
+/* 🔹 Responsive Fix */
+@media (max-width: 768px) {
+    .poster-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .poster-image-container {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    .parallelogram {
+        clip-path: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .poster-image {
+        width: 100%;
+        height: auto;
+    }
+} 
+
+/* Hamburger Menu Items */
+.nav-menu ul li {
+    background-color: #333; /* Default background color */
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Alternate shading for menu items */
+.nav-menu ul li:nth-child(odd) {
+    background-color: #444; /* Dark gray for odd items */
+}
+
+.nav-menu ul li:nth-child(even) {
+    background-color: #222; /* Black for even items */
+}
+
+/* Hover effect */
+.nav-menu ul li:hover {
+    background-color: #555; /* Lighter gray on hover */
+    color: #fff; /* Ensure text remains readable */
+}
+
+/* Menu Item Links */
+.nav-menu ul li a {
+    color: #fff; /* White text */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem;
+    display: block;
+    width: 100%;
+}
+/* 🔹 Background Video */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 🔹 ADJUST HEADER MARGINS */
+.scroll-header {
+    margin: 20px 0; /* Added uniform margin */
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 🔹 REDUCE POSTER SECTION PADDING */
+.poster-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Reduced from 40px */
+    padding: 20px;
+    position: relative;
+}
+/* Modified frame styles */
+.title-frames {
+    position: relative;
+    z-index: 2;
+}
+
+.frame {
+    width: 100vw;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.yellow-frame {
+    font-family: "CANVAS";
+    background: #ca891a;
+    color: #000;
+}
+
+.black-frame {
+    background:url('resources/starry sky.jpg');
+    color: #ca891a;
+    
+}
+
+/* Adjust main content margin */
+main {
+    margin-top: 0;
+    position: relative;
+    z-index: 3;
+}
+
+/* Mobile-first CSS additions */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 3.5rem;
+        text-shadow: 2px 2px 0 #892f2e;
+    }
+
+    header p {
+        font-size: 1.2rem;
+    }
+
+    .frame {
+        font-size: 2rem;
+        height: 20vh;
+        letter-spacing: 3px;
+        padding: 10px;
+    }
+
+    .poster-wrapper {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .poster-image-container {
+        position: static;
+        width: 100%;
+        right: 0;
+        transform: none;
+        margin-top: 20px;
+    }
+
+    .parallelogram {
+        clip-path: none;
+    }
+
+    .poster-card {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .poster-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .poster-text p {
+        font-size: 1rem;
+    }
+
+    .hamburger span {
+        width: 30px;
+        height: 4px;
+    }
+
+    .nav-menu {
+        width: 100%;
+        left: -100%;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+}
+
+/* Add touch-friendly hover states */
+@media (hover: none) {
+    .poster-image-container,
+    .poster-card {
+        transform: none !important;
+    }
+    
+    .image-container {
+        opacity: 1 !important;
+    }
+}
+/* 🔹 Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    /* Header */
+    header h1 {
+        font-size: 3rem;
+        text-shadow: 2px 2px 0 #892f2e, 4px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+        font-size: 1.2rem;
+        text-shadow: 1px 1px 0 #892f2e, 2px 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    /* Homepage Video Section */
+    .homepage {
+        height: 30vh; /* Reduced from 50vh */
+    }
+
+    #bg-video {
+        height: 30vh;
+        width: 100%; /* Added width constraint */
+        margin: 0 auto;
+        border-radius: 10px; /* Optional: adds rounded corners */
+    }
+
+    .nav-menu {
+        width: 50%;
+        left: -100%;
+    }
+
+    .nav-menu ul {
+        padding-top: 80px;
+    }
+
+    .nav-menu ul li {
+        padding: 0.8rem;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1rem;
+    }
+
+    /* Poster Section */
+    .poster-wrapper {
+        width: 95%;
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
+    .poster-card {
+        padding: 15px;
+        margin-top: 150px;
+    }
+
+    .poster-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .poster-text p {
+        font-size: 1rem;
+    }
+
+    .poster-image-container {
+        position: absolute;
+        right: auto;
+        margin-top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 200px;
+        border: 1px solid white;
+        
+    }
+
+    .poster-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Footer */
+    footer {
+        padding: 0.8rem 0;
+        font-size: 0.9rem;
+    }
+
+    /* Reduce overall spacing */
+    .poster-section {
+        gap: 5px;
+        padding: 10px;
+    }
+
+    /* Fix header spacing */
+    header h1 {
+        font-size: 2.5rem;
+        margin: 10px 0;
+    }
+
+    header p {
+        font-size: 1rem;
+        margin: 5px 0;
+    }
+
+    /* Adjust poster wrapper layout */
+    .poster-wrapper {
+        width: 95%;
+        margin: 15px auto;
+        height: auto;
+        padding-top: 100px; /* Space for image */
+    }
+
+    /* Adjust card spacing */
+    .poster-card {
+        margin-top: 0;
+        padding: 15px;
+    }
+
+    /* Reduce text sizes */
+    .poster-text h2 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+
+    .poster-text p {
+        font-size: 0.9rem;
+    }
+
+    /* Reduce section margins */
+    section {
+        margin-bottom: 1rem;
+    }
+
+    /* Adjust scroll header spacing */
+    .scroll-header {
+        margin: 10px 0;
+    }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .poster-image-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .poster-card {
+        margin-top: 120px;
+    }
+
+    /* Further reduce spacing */
+    .poster-wrapper {
+        padding-top: 80px;
+    }
+
+    .poster-image-container {
+        width: 120px;
+        height: 120px;
+        top: -60px;
+    }
+
+    .poster-card {
+        padding: 10px;
+    }
+
+    /* Adjust main content padding */
+    main {
+        padding: 10px;
+    }
+
+    /* Reduce header sizes */
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Landscape Mode Fix */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .homepage {
+        height: 100vh;
+    }
+
+    .nav-menu ul {
+        padding-top: 60px;
+    }
+
+    .poster-wrapper {
+        flex-direction: row;
+        height: auto;
+        min-height: 200px;
+    }
+
+    .poster-image-container {
+        position: relative;
+        top: auto;
+        right: -30px;
+        transform: none;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.about-inferencia {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 50px;
+    background: linear-gradient(135deg, rgba(248, 167, 27, 0.95), rgba(51, 51, 51, 0.85));
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    text-align: center;
+}
+
+.content {
+    width: 100%;
+}
+
+.content h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    max-width: 900px;
+    margin: 0 auto 15px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 20px;
+    background: #f8a71b;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background: #fff;
+    color: #f8a71b;
+    box-shadow: 0 6px 15px rgba(248, 167, 27, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-inferencia {
+        padding: 30px;
+    }
+
+    .content h2 {
+        font-size: 28px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+}
+
+/* Section Background with Image */
+.section-with-bg {
+    width: 100%;
+    padding: 60px 0;
+    background: url('resources/starry sky.jpg') no-repeat center center/cover;
+    position: relative;
+    color: white; /* Ensures text is visible */
+    
+}
+.section-with-bg h2{
+    font-family: "CONDENSED";
+    font-size: 60px;
+}
+
+/* Optional: Add a Dark Overlay to Improve Text Readability */
+.section-with-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+}
