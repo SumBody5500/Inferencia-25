@@ -1,0 +1,302 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Header Styles */
+.events-header {
+    font-size: 6rem; /* Large, bold font size */
+    font-weight: 900; /* Heavy font weight */
+    color: #ca891a; /* Vibrant yellow color */
+    text-transform: uppercase; /* Make text uppercase */
+    text-align: center; /* Center the text */
+    position: relative; /* Position for shadow effect */
+    padding-top: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    /* Add text shadow for depth */
+    text-shadow: 
+        3px 3px 0 #892f2e, /* Vibrant red shadow */
+        6px 6px 0 rgba(0, 0, 0, 0.3); /* Slight black shadow for extra depth */
+}
+
+.events-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.events-header p {
+    font-size: 1.2rem;
+}
+
+/* Events Container */
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Event Card Styles */
+.event-card {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+}
+
+.event-card .event-front,
+.event-card .event-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.event-card .event-front {
+    background-color: #444;
+    color: #fff;
+}
+
+.event-card .event-back {
+    background-color: #f8a71b;
+    color: #121212;
+    transform: rotateY(180deg);
+}
+
+.event-card:hover .event-front {
+    transform: rotateY(180deg);
+}
+
+.event-card:hover .event-back {
+    transform: rotateY(0deg);
+}
+
+.event-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+/* Hamburger Menu */
+.menu-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    background: #fff;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hidden off-screen initially */
+    width: 250px;
+    height: 100vh;
+    background: #333;
+    transition: left 0.4s ease;
+    z-index: 1000;
+}
+
+.nav-menu.active {
+    right: 0; /* Slide in when active */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding-top: 60px;
+}
+
+.nav-menu ul li {
+    padding: 15px;
+    text-align: center;
+    background-color: #444; /* Default background */
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu ul li:hover {
+    background-color: #555; /* Lighter shade on hover */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+/* Add these media queries at the end of the file */
+@media screen and (max-width: 768px) {
+    .events-header {
+        font-size: 2.8rem;
+        text-shadow: 2px 2px 0 #892f2e, 3px 3px 0 rgba(0, 0, 0, 0.3);
+        margin: 10px 0;
+        padding-top: 10px;
+    }
+
+    .events-container {
+        padding: 5px;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .event-card {
+        width: 90%;
+        height: 280px;
+        margin: 5px auto;
+    }
+
+    .event-image {
+        max-width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .event-card .event-front,
+    .event-card .event-back {
+        padding: 15px;
+    }
+
+    .event-front h2 {
+        font-size: 1.5rem;
+        margin: 5px 0;
+    }
+
+    .event-front p {
+        font-size: 0.9rem;
+    }
+
+    .nav-menu ul {
+        padding-top: 40px;
+    }
+
+    .nav-menu ul li {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .events-header {
+        font-size: 2rem;
+        margin: 5px 0;
+        padding-top: 5px;
+    }
+
+    .event-card {
+        height: 250px;
+        margin: 3px auto;
+    }
+
+    .event-image {
+        max-width: 80px;
+        margin-bottom: 8px;
+    }
+
+    .event-front h2 {
+        font-size: 1.2rem;
+        margin: 3px 0;
+    }
+
+    .event-front p {
+        font-size: 0.8rem;
+    }
+
+    .events-container {
+        gap: 8px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .nav-menu ul li {
+        padding: 8px;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1rem;
+    }
+
+    .hamburger span {
+        height: 3px;
+        margin: 4px 0;
+    }
+
+    footer {
+        padding: 0.5rem 0;
+        margin-top: 1rem;
+    }
+}
+
+/* Landscape orientation fixes */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .events-container {
+        padding: 5px 3%;
+        gap: 8px;
+    }
+
+    .event-card {
+        width: 200px;
+        height: 220px;
+        margin: 3px;
+    }
+
+    .events-header {
+        font-size: 1.8rem;
+        margin: 5px 0;
+    }
+}
